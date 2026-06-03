@@ -1,7 +1,13 @@
 .DS_Store
 ._*
 Thumbs.db
-_custompanels
-_output
 .obsidian
+TODO.md
+
+_custompanels/*
+!_custompanels/.gitkeep
+
+_output/*
+!_output/.gitkeep
+
 
