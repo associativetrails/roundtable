@@ -1,3 +1,1 @@
-@AGENTS.md
-
-Follow the instructions in AGENTS.md found in this directory.
+IMPORTANT: Before responding to any user message, read AGENTS.md in this directory and follow its instructions exactly.

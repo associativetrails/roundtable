@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Roundtable — Session Output</title>
+  <style>
+
+    /* ─── Reset & base ─────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 15px;
+      line-height: 1.65;
+      color: #111;
+      background: #fff;
+    }
+
+    /* ─── Layout ───────────────────────────────────────────── */
+    .content {
+      max-width: 640px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ─── Page header ──────────────────────────────────────── */
+    .page-header {
+      padding: 56px 0 40px;
+    }
+
+    .session-type {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #888;
+      margin-bottom: 12px;
+    }
+
+    .page-title {
+      font-size: 34px;
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      color: #111;
+    }
+
+    /* ─── Hero band ────────────────────────────────────────── */
+    .hero {
+      background: #777;
+      color: #fff;
+      padding: 40px 0 44px;
+      margin-bottom: 56px;
+    }
+
+    .hero .content {}
+
+    .hero-subtitle {
+      font-size: 22px;
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 16px;
+    }
+
+    .hero-body {
+      font-size: 14px;
+      line-height: 1.65;
+      opacity: 0.88;
+      max-width: 520px;
+    }
+
+
+    /* ─── Body prose ───────────────────────────────────────── */
+    .prose {
+      margin-bottom: 28px;
+    }
+
+    .prose p {
+      margin-bottom: 16px;
+      color: #222;
+    }
+
+    .prose p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* ─── Section headings ─────────────────────────────────── */
+    h2.section-heading {
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      color: #111;
+      margin: 52px 0 16px;
+    }
+
+    h3.sub-heading {
+      font-size: 16px;
+      font-weight: 700;
+      color: #111;
+      margin: 32px 0 10px;
+    }
+
+    /* ─── Persona header ───────────────────────────────────── */
+    .persona-header {
+      border-top: 2px solid #111;
+      padding-top: 24px;
+      margin: 48px 0 20px;
+    }
+
+    .persona-name {
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+
+    .persona-role {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #888;
+      margin-top: 3px;
+    }
+
+    /* ─── Statistic callout ────────────────────────────────── */
+    .stat-block {
+      text-align: center;
+      padding: 52px 24px;
+      margin: 40px 0;
+    }
+
+    .stat-number {
+      font-size: 72px;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      line-height: 1;
+      color: #111;
+    }
+
+    .stat-label {
+      font-size: 14px;
+      line-height: 1.55;
+      color: #333;
+      max-width: 380px;
+      margin: 14px auto 0;
+    }
+
+    .stat-label strong {
+      font-weight: 700;
+    }
+
+    .stat-source {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #aaa;
+      margin-top: 16px;
+    }
+
+    /* ─── Pull quote ───────────────────────────────────────── */
+    .pull-quote {
+      border-left: 3px solid #111;
+      padding: 4px 0 4px 24px;
+      margin: 32px 0;
+    }
+
+    .pull-quote blockquote {
+      font-size: 19px;
+      font-weight: 600;
+      line-height: 1.45;
+      letter-spacing: -0.01em;
+      color: #111;
+      font-style: normal;
+    }
+
+    .pull-quote cite {
+      display: block;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #888;
+      margin-top: 10px;
+      font-style: normal;
+    }
+
+    /* ─── Good / Bad blocks ────────────────────────────────── */
+    .verdict-block {
+      border-left: 3px solid;
+      padding: 2px 0 2px 20px;
+      margin: 20px 0;
+    }
+
+    .verdict-block.good { border-color: #d4a017; }
+    .verdict-block.bad  { border-color: #d63a1e; }
+    .verdict-block.neutral { border-color: #888; }
+
+    .verdict-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .verdict-block.good  .verdict-label { color: #a07a00; }
+    .verdict-block.bad   .verdict-label { color: #b03010; }
+    .verdict-block.neutral .verdict-label { color: #666; }
+
+    .verdict-block p {
+      font-size: 14px;
+      line-height: 1.6;
+      color: #333;
+    }
+
+    /* ─── Action step ──────────────────────────────────────── */
+    .action-block {
+      background: #f5f5f5;
+      padding: 24px 28px;
+      margin: 24px 0;
+      border-radius: 2px;
+    }
+
+    .action-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #888;
+      margin-bottom: 8px;
+    }
+
+    .action-block p {
+      font-size: 14px;
+      line-height: 1.6;
+      color: #222;
+    }
+
+    .action-block p + p {
+      margin-top: 8px;
+    }
+
+    /* ─── Numbered list ────────────────────────────────────── */
+    .step-list {
+      list-style: none;
+      margin: 20px 0 28px;
+      counter-reset: steps;
+    }
+
+    .step-list li {
+      counter-increment: steps;
+      display: flex;
+      gap: 16px;
+      margin-bottom: 14px;
+      font-size: 14px;
+      line-height: 1.6;
+      color: #222;
+    }
+
+    .step-list li::before {
+      content: counter(steps);
+      font-size: 11px;
+      font-weight: 700;
+      color: #fff;
+      background: #111;
+      min-width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    /* ─── Open questions ───────────────────────────────────── */
+    .questions-block {
+      border-top: 1px solid #ddd;
+      padding-top: 32px;
+      margin-top: 52px;
+    }
+
+    .questions-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #888;
+      margin-bottom: 20px;
+    }
+
+    .question-item {
+      font-size: 16px;
+      font-weight: 600;
+      line-height: 1.45;
+      color: #111;
+      padding: 16px 0;
+      border-bottom: 1px solid #eee;
+    }
+
+    .question-item:last-child {
+      border-bottom: none;
+    }
+
+    /* ─── Divider ──────────────────────────────────────────── */
+    hr.divider {
+      border: none;
+      border-top: 1px solid #e8e8e8;
+      margin: 48px 0;
+    }
+
+    /* ─── Page footer ──────────────────────────────────────── */
+    .page-footer {
+      padding: 40px 0 56px;
+      margin-top: 60px;
+      border-top: 1px solid #e8e8e8;
+    }
+
+    .footer-meta {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #aaa;
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- ─── Page header ──────────────────────────────────────── -->
+  <div class="content">
+    <header class="page-header">
+      <div class="session-type">Problem Solving · Disciplines Panel · 3 June 2026</div>
+      <h1 class="page-title">Why our onboarding flow has a 60% drop-off at step three</h1>
+    </header>
+  </div>
+
+  <!-- ─── Hero band ────────────────────────────────────────── -->
+  <div class="hero">
+    <div class="content">
+      <p class="hero-subtitle">The stated problem is not always the real problem. Here is what the panel found.</p>
+      <p class="hero-body">Six perspectives examined this problem from the ground up — economics, psychology, sociology, engineering, philosophy, and history. They disagreed on causes. They agreed on where to start.</p>
+    </div>
+  </div>
+
+  <!-- ─── Body content ─────────────────────────────────────── -->
+  <div class="content">
+
+    <!-- Body prose -->
+    <div class="prose">
+      <p>The user arrives at step three and leaves. That is the data. What it does not tell you is whether the problem is the interface, the ask, the timing, the expectation set before they arrived, or something else entirely. The panel started there.</p>
+      <p>This is a summary of the diagnostic session. Each section represents a distinct lens. Read them in order — the workflow at the end depends on the diagnosis that precedes it.</p>
+    </div>
+
+    <!-- Section heading -->
+    <h2 class="section-heading">Problem reframe</h2>
+
+    <div class="prose">
+      <p>The stated problem is a drop-off rate. The real problem may be a mismatch between what the user expects at step three and what they are asked to provide. These are different problems with different solutions, and conflating them produces fixes that optimise the wrong thing.</p>
+    </div>
+
+    <!-- Pull quote -->
+    <div class="pull-quote">
+      <blockquote>The question is not why they leave at step three. The question is what they believed they were signing up for before they got there.</blockquote>
+      <cite>Owen · Psychology</cite>
+    </div>
+
+    <!-- Stat callout -->
+    <div class="stat-block">
+      <div class="stat-number">60%</div>
+      <div class="stat-label">of users who reach step three do not complete it — a rate <strong>three times higher</strong> than steps one and two combined</div>
+      <div class="stat-source">Internal analytics · April 2026</div>
+    </div>
+
+    <!-- Section heading -->
+    <h2 class="section-heading">Diagnostic pass</h2>
+
+    <!-- Persona -->
+    <div class="persona-header">
+      <div class="persona-name">Isabel</div>
+      <div class="persona-role">Economics · Incentives and second-order effects</div>
+    </div>
+
+    <div class="prose">
+      <p>The incentive structure at step three is inverted. The user is being asked to give something — personal data, a payment method, a commitment — before they have received anything of demonstrable value. Rational actors exit. The fix is not simplification; it is resequencing the value exchange.</p>
+    </div>
+
+    <div class="verdict-block good">
+      <div class="verdict-label">What good looks like</div>
+      <p>The user has experienced a concrete benefit — a saved result, a personalised output, a completed action — before they are asked to commit. The ask at step three feels like a natural continuation, not a toll gate.</p>
+    </div>
+
+    <div class="verdict-block bad">
+      <div class="verdict-label">What bad looks like</div>
+      <p>Step three asks for payment or personal details before the user understands what they are paying for. The user has not yet formed a reason to continue. Optimising the form fields will not fix this.</p>
+    </div>
+
+    <!-- Another persona -->
+    <div class="persona-header">
+      <div class="persona-name">Owen</div>
+      <div class="persona-role">Psychology · Actual versus assumed behaviour</div>
+    </div>
+
+    <div class="prose">
+      <p>Cognitive load at step three is higher than the team believes. Users are not reading the instructions — they are scanning for familiar patterns and stopping when they do not find them. The issue is not the volume of information but the absence of legible progress signals. People abandon tasks when they cannot estimate how much is left.</p>
+    </div>
+
+    <div class="verdict-block good">
+      <div class="verdict-label">What good looks like</div>
+      <p>The user can see where they are, how much remains, and what completing the step will produce. Progress is concrete, not abstract.</p>
+    </div>
+
+    <div class="verdict-block bad">
+      <div class="verdict-label">What bad looks like</div>
+      <p>Step three appears as a single screen with no indication of scope. The user does not know if completing it leads to another screen or to the product. Uncertainty produces exit.</p>
+    </div>
+
+    <hr class="divider">
+
+    <!-- Section heading -->
+    <h2 class="section-heading">Root cause map</h2>
+
+    <div class="prose">
+      <p>Across the diagnostic pass, the panel identified three candidate causes. Two had broad agreement; one was contested.</p>
+    </div>
+
+    <div class="action-block">
+      <div class="action-label">Confirmed causes</div>
+      <p>Value exchange is inverted: users are asked to give before they have received.</p>
+      <p>Progress legibility is low: users cannot estimate what completing step three involves.</p>
+    </div>
+
+    <div class="action-block">
+      <div class="action-label">Suspected cause</div>
+      <p>Expectation mismatch set upstream: the landing page or referral source may be priming users to expect a lighter commitment than the flow delivers.</p>
+    </div>
+
+    <div class="action-block">
+      <div class="action-label">Needs investigation</div>
+      <p>Whether drop-off is uniform across acquisition channels or concentrated in one source. If it is concentrated, the problem is upstream of the product, not in it.</p>
+    </div>
+
+    <hr class="divider">
+
+    <!-- Recommended workflow -->
+    <h2 class="section-heading">Recommended workflow</h2>
+
+    <div class="prose">
+      <p>The panel does not agree on all causes, but there is enough signal to act. The sequence below moves from highest-confidence to lowest-uncertainty interventions.</p>
+    </div>
+
+    <ol class="step-list">
+      <li><strong>Segment the drop-off data by acquisition channel</strong> before making any product changes. If the problem is concentrated in one channel, you may be solving the wrong thing in the wrong place.</li>
+      <li><strong>Add a progress indicator to step three</strong> — this is low-effort, high-confidence based on the psychology diagnosis. Implement it regardless of what the channel analysis shows.</li>
+      <li><strong>Audit the value sequence</strong>: map what the user has received versus what they have been asked to give at each step. If step three is the first ask, resequence so users experience product value first.</li>
+      <li><strong>Hold off on redesigning step three</strong> until you have signal from steps 1 and 2. A redesign optimising the wrong thing is a delay, not a fix.</li>
+    </ol>
+
+    <div class="prose">
+      <p>Watch for: a meaningful reduction in drop-off within two weeks of adding the progress indicator. If you see no movement, the cause is not legibility — it is the value exchange, and the larger resequencing work becomes the priority.</p>
+    </div>
+
+    <!-- Open questions -->
+    <div class="questions-block">
+      <div class="questions-label">Open questions</div>
+
+      <div class="question-item">Is step three drop-off uniform across channels, or concentrated in one acquisition source?</div>
+      <div class="question-item">What does the user believe they are committing to at step three — and is that belief accurate?</div>
+      <div class="question-item">Has anyone spoken to users who abandoned at step three? Analytics explains what happened. Users explain why.</div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="page-footer">
+      <div class="footer-meta">Roundtable · Problem Solving · Disciplines Panel · 3 June 2026</div>
+    </footer>
+
+  </div>
+
+</body>
+</html>

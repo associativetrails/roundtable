@@ -22,7 +22,7 @@ The project has three components:
 
 Open this folder in your AI tool of choice (Claude in Cowork or Claude Code, Codex, or any agent that reads `AGENTS.md`). You do not need to do any setup. The AI will read the instructions automatically.
 
-Then use plain language to invoke one of the workflows below.
+Then use plain language to invoke one of the workflows below. At the end of each session, the AI will ask which format you want the output saved in: Markdown, Word document, or HTML. Markdown is the default if you skip the question.
 
 ---
 
@@ -48,7 +48,7 @@ The output is reactive. You bring the work; the panel responds to it.
 
 > "I want feedback on this proposal from the Stakeholder Map panel."
 
-Output is saved as `Panel Feedback - {Panel} - {Title}.md`.
+Output is saved as `Panel Feedback - {Panel} - {Title}`.
 
 ---
 
@@ -69,7 +69,7 @@ The output is a workflow, not a verdict. The emphasis is on understanding the pr
 
 > "I want to work through a problem using the Historical Figures panel."
 
-Output is saved as `Problem Solving - {Panel} - {Title}.md`.
+Output is saved as `Problem Solving - {Panel} - {Title}`.
 
 ---
 
@@ -90,7 +90,7 @@ The output is a recommendation with the reasoning and tradeoffs made explicit. I
 
 > "I need to decide between two strategies. Run it through the Six Hats panel."
 
-Output is saved as `Decision Making - {Panel} - {Title}.md`.
+Output is saved as `Decision Making - {Panel} - {Title}`.
 
 ---
 
@@ -197,6 +197,8 @@ Create a file named `Persona - {Name} - {Role}.md` in your panel subfolder. Each
 ```
 # Name — Role
 
+## {Optional context field}
+
 ## Background
 2–3 sentences covering seniority, experience, domain, and defining career context.
 
@@ -215,6 +217,8 @@ How they communicate. 2–3 adjectives and a sample sentence in their voice.
 ## The question they always ask
 One signature question this person reliably raises.
 ```
+
+The optional context field sits between the name and Background, and surfaces the organising principle of the panel — for example `## Time horizon: days to weeks`, `## Stakeholder position: the person the decision is ultimately for`, or `## Discipline: economics`. Include it when the panel's logic gives each persona a distinct categorical role. Leave it out when it adds nothing. If other personas in the panel already have it, add a matching one for consistency.
 
 ### What makes a good panel
 

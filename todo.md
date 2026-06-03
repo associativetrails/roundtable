@@ -1,21 +1,39 @@
 # Roundtable — Pre-launch TODO
 
-## High priority (do before publishing)
+---
 
-- [x] **Resolve the Blog readers panel.** Either replace it with a more generic example panel (e.g. "Product Team") that any user could relate to, or move it into an `Examples/` subfolder with a note explaining it shows what a domain-specific panel looks like. As-is it creates noise next to the five generic default panels.
+## Must do before publishing
 
-- [x] **Add an Outputs folder and .gitignore.** Every Panel Feedback and Problem Solving session writes a markdown file into the project root. Create an `Outputs/` subfolder and update AGENTS.md to save sessions there. Add a `.gitignore` to exclude at minimum `.DS_Store` and optionally the Outputs folder if generated content shouldn't be committed.
+- [x] **Decide what to do with the Blog Readers panel.** It lives in `/_custompanels` and is currently gitignored, so it won't ship — but the panel itself is domain-specific to Associative Trails. Either move a cleaned-up version to `/_examplepanels` as a demonstration of what a custom panel looks like, or leave it excluded. Either way, make the call consciously.
 
-## Medium priority
+- [x] **Add example output files.** The README promises users can see what a session produces, but there are no examples in the repo. Generate one clean example for each of the three session types (Panel Feedback, Problem Solving, Decision Making) using an example panel, and save them somewhere visible — either in a top-level `/_examples` folder or linked from the README. This is the highest-value thing for convincing new users the project is worth using.
 
-- [x] **Fix the Problem Solving prompt.** It currently references "five chosen historical or contemporary figures" internally — a relic from its original design. Replace with generic language so it doesn't produce odd framing when run with non-historical panels like Stakeholder Map or Six Hats.
+- [x] **Check the `_output` folder before pushing.** It contains a real session (`Boardroom Simulation - Six Hats - Associative Trails Pivot.md`) with what looks like internal Associative Trails content. The folder is gitignored so it won't push, but confirm the gitignore is working correctly (`git status`) before publishing.
 
-- [ ] **Standardise persona format across panels.** Time Horizons, Stakeholder Map, and Disciplines panels each have an extra context field near the top (`## Time horizon:`, `## Stakeholder position:`, `## Discipline:`). Historical Figures and Six Hats don't. Decide whether to standardise on including these or document them as optional in the README persona template.
+- [x] **Standardise persona format across panels.** Time Horizons, Stakeholder Map, and Disciplines panels each have an extra context field near the top (`## Time horizon:`, `## Stakeholder position:`, `## Discipline:`). Historical Figures and Six Hats don't. Decide whether to standardise on including these or document them as optional in DESIGN.md and the README persona template.
 
-- [ ] **Add example output files.** One example Panel Feedback output and one Problem Solving output would show people what a session actually produces before they commit to trying it. Highest-value item for convincing new users the project is worth using.
+- [x] **Test all three workflows end to end.** Run one Panel Feedback, one Problem Solving, and one Decision Making session from a cold start in a fresh Claude conversation. Verify the AI reads AGENTS.md correctly, asks the right questions, picks up the right prompt file, runs the session, asks for output format, and saves to `/_output` with the right filename. Fix anything that breaks.
+
+- [x] **Test all three output formats.** For at least one session, generate the output in each of the three formats (Markdown, Word, HTML) and check they're usable. In particular, confirm the HTML output matches `template.html` and the Word output follows `DESIGN.md`.
+
+---
+
+## Should do before a big announcement
+
+- [ ] **Write a short `CONTRIBUTING.md`.** If you're publishing this publicly and want people to submit panels, they need to know how. Cover: the persona file format, the naming convention, where custom panels live, and how to submit a PR.
+
+- [ ] **Add a licence file.** Decide on a licence (MIT is the obvious choice for an open framework) and add a `LICENSE` file. Without it, the default is "all rights reserved" which is probably not the intent.
+
+- [x] **Clean up the Expert Persona Generator prompt.** It currently says "return a downloadable markdown file" — language from Claude's web UI that doesn't fit a Cowork or Claude Code context. Update it to say "save the file to the specified subfolder."
+
+- [x] **Consider whether `CLAUDE.md` should be in the repo.** It currently just says `@AGENTS.md`. Fine to include, but make sure it doesn't contain anything session-specific or AT-internal before it goes public.
+
+- [ ] **Add a social preview image.** GitHub shows the `og:image` on link previews. A simple image with the Roundtable name and a one-line description will make the repo look intentional when people share it.
+
+---
 
 ## Nice to have
 
-- [ ] Clean up the Expert Persona Generator prompt — it says "return a downloadable markdown file" which is language from Claude's web UI and doesn't fit a Cowork/Code context.
 - [ ] Add a note to the README about mixing personas from different panels as a valid workflow.
-- [ ] Consider a CONTRIBUTING.md with guidance for people who want to submit new panels.
+- [ ] Consider whether `template.html` should be described in the README so users know it exists and what it's for.
+- [ ] Add a `CHANGELOG.md` or release notes if you plan to version the framework over time.

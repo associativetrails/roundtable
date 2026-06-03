@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Roundtable — Panel Feedback</title>
+  <style>
+
+    /* ─── Reset & base ─────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 15px;
+      line-height: 1.65;
+      color: #111;
+      background: #fff;
+    }
+
+    /* ─── Layout ───────────────────────────────────────────── */
+    .content {
+      max-width: 640px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ─── Page header ──────────────────────────────────────── */
+    .page-header {
+      padding: 56px 0 40px;
+    }
+
+    .session-type {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #888;
+      margin-bottom: 12px;
+    }
+
+    .page-title {
+      font-size: 34px;
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      color: #111;
+    }
+
+    /* ─── Hero band ────────────────────────────────────────── */
+    .hero {
+      background: #777;
+      color: #fff;
+      padding: 40px 0 44px;
+      margin-bottom: 56px;
+    }
+
+    .hero-subtitle {
+      font-size: 22px;
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 16px;
+    }
+
+    .hero-body {
+      font-size: 14px;
+      line-height: 1.65;
+      opacity: 0.88;
+      max-width: 520px;
+    }
+
+    /* ─── Body prose ───────────────────────────────────────── */
+    .prose {
+      margin-bottom: 28px;
+    }
+
+    .prose p {
+      margin-bottom: 16px;
+      color: #222;
+    }
+
+    .prose p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* ─── Section headings ─────────────────────────────────── */
+    h2.section-heading {
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      color: #111;
+      margin: 52px 0 16px;
+    }
+
+    h3.sub-heading {
+      font-size: 16px;
+      font-weight: 700;
+      color: #111;
+      margin: 32px 0 10px;
+    }
+
+    /* ─── Persona header ───────────────────────────────────── */
+    .persona-header {
+      border-top: 2px solid #111;
+      padding-top: 24px;
+      margin: 48px 0 20px;
+    }
+
+    .persona-name {
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+
+    .persona-score {
+      font-size: 13px;
+      font-weight: 700;
+      color: #111;
+      margin-top: 6px;
+    }
+
+    .persona-score-justification {
+      font-size: 13px;
+      color: #555;
+      margin-top: 4px;
+      font-style: italic;
+    }
+
+    .persona-role {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #888;
+      margin-top: 3px;
+    }
+
+    /* ─── Statistic callout ────────────────────────────────── */
+    .stat-block {
+      text-align: center;
+      padding: 52px 24px;
+      margin: 40px 0;
+    }
+
+    .stat-number {
+      font-size: 72px;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      line-height: 1;
+      color: #111;
+    }
+
+    .stat-label {
+      font-size: 14px;
+      line-height: 1.55;
+      color: #333;
+      max-width: 380px;
+      margin: 14px auto 0;
+    }
+
+    .stat-label strong {
+      font-weight: 700;
+    }
+
+    /* ─── Pull quote ───────────────────────────────────────── */
+    .pull-quote {
+      border-left: 3px solid #111;
+      padding: 4px 0 4px 24px;
+      margin: 32px 0;
+    }
+
+    .pull-quote blockquote {
+      font-size: 19px;
+      font-weight: 600;
+      line-height: 1.45;
+      letter-spacing: -0.01em;
+      color: #111;
+      font-style: normal;
+    }
+
+    .pull-quote cite {
+      display: block;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #888;
+      margin-top: 10px;
+      font-style: normal;
+    }
+
+    /* ─── Good / Bad / Neutral blocks ─────────────────────── */
+    .verdict-block {
+      border-left: 3px solid;
+      padding: 2px 0 2px 20px;
+      margin: 20px 0;
+    }
+
+    .verdict-block.good    { border-color: #d4a017; }
+    .verdict-block.bad     { border-color: #d63a1e; }
+    .verdict-block.neutral { border-color: #888; }
+
+    .verdict-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .verdict-block.good    .verdict-label { color: #a07a00; }
+    .verdict-block.bad     .verdict-label { color: #b03010; }
+    .verdict-block.neutral .verdict-label { color: #666; }
+
+    .verdict-block p {
+      font-size: 14px;
+      line-height: 1.6;
+      color: #333;
+    }
+
+    .verdict-block p + p {
+      margin-top: 8px;
+    }
+
+    /* ─── Action block ─────────────────────────────────────── */
+    .action-block {
+      background: #f5f5f5;
+      padding: 24px 28px;
+      margin: 24px 0;
+      border-radius: 2px;
+    }
+
+    .action-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #888;
+      margin-bottom: 8px;
+    }
+
+    .action-block p {
+      font-size: 14px;
+      line-height: 1.6;
+      color: #222;
+    }
+
+    .action-block p + p {
+      margin-top: 8px;
+    }
+
+    /* ─── Numbered list ────────────────────────────────────── */
+    .step-list {
+      list-style: none;
+      margin: 20px 0 28px;
+      counter-reset: steps;
+    }
+
+    .step-list li {
+      counter-increment: steps;
+      display: flex;
+      gap: 16px;
+      margin-bottom: 14px;
+      font-size: 14px;
+      line-height: 1.6;
+      color: #222;
+    }
+
+    .step-list li::before {
+      content: counter(steps);
+      font-size: 11px;
+      font-weight: 700;
+      color: #fff;
+      background: #111;
+      min-width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    /* ─── Open questions ───────────────────────────────────── */
+    .questions-block {
+      border-top: 1px solid #ddd;
+      padding-top: 32px;
+      margin-top: 52px;
+    }
+
+    .questions-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #888;
+      margin-bottom: 20px;
+    }
+
+    .question-item {
+      font-size: 16px;
+      font-weight: 600;
+      line-height: 1.45;
+      color: #111;
+      padding: 16px 0;
+      border-bottom: 1px solid #eee;
+    }
+
+    .question-item:last-child {
+      border-bottom: none;
+    }
+
+    /* ─── Divider ──────────────────────────────────────────── */
+    hr.divider {
+      border: none;
+      border-top: 1px solid #e8e8e8;
+      margin: 48px 0;
+    }
+
+    /* ─── Page footer ──────────────────────────────────────── */
+    .page-footer {
+      padding: 40px 0 56px;
+      margin-top: 60px;
+      border-top: 1px solid #e8e8e8;
+    }
+
+    .footer-meta {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #aaa;
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- ─── Page header ──────────────────────────────────────── -->
+  <div class="content">
+    <header class="page-header">
+      <div class="session-type">Panel Feedback · Stakeholder Map · 3 June 2026</div>
+      <h1 class="page-title">AI Workflow Implementation Service Description</h1>
+    </header>
+  </div>
+
+  <!-- ─── Hero band ────────────────────────────────────────── -->
+  <div class="hero">
+    <div class="content">
+      <p class="hero-subtitle">Competent, cautious, and evidence-free.</p>
+      <p class="hero-body">Six stakeholders reviewed this service description: a frontline worker, an end user, a regulator, a middle manager, an investor, and an investigative journalist. They found consistent positioning, zero proof, and a document written for the person who signs the contract — not the people who live with the result.</p>
+    </div>
+  </div>
+
+  <!-- ─── Body content ─────────────────────────────────────── -->
+  <div class="content">
+
+    <div class="prose">
+      <p>The document describes a credible service. It is clear, not jargon-heavy, and takes the right strategic position — start with the problem, not the technology. But it makes claims it does not substantiate, omits the information buyers most need, and gives no one in the room a reason to believe this provider specifically over any other. The panel was mostly aligned on what is missing.</p>
+    </div>
+
+    <div class="stat-block">
+      <div class="stat-number">5.2</div>
+      <div class="stat-label">Overall panel score out of 10 — averaged across six perspectives</div>
+    </div>
+
+    <!-- ─── Personas ─────────────────────────────────────── -->
+    <h2 class="section-heading">Panel reviews</h2>
+
+    <!-- Dev -->
+    <div class="persona-header">
+      <div class="persona-name">Dev — Frontline Worker</div>
+      <div class="persona-role">The person who delivers the service day to day</div>
+      <div class="persona-score">Score: 5/10</div>
+      <div class="persona-score-justification">Reads like it was written for the person who signs the contract, not the people who'll have to live with whatever gets built.</div>
+    </div>
+
+    <div class="verdict-block good">
+      <div class="verdict-label">What works</div>
+      <p>"Staff training and adoption support" is in there — that's the thing that actually determines whether any of this sticks, and most people like this leave it out entirely.</p>
+      <p>"Practical, vendor-neutral" is the right instinct. The last three consultants all had a preferred tool they were going to implement regardless.</p>
+      <p>"Workflows that people will actually use" — finally, someone who at least knows the phrase. Whether they mean it is another question.</p>
+    </div>
+
+    <div class="verdict-block bad">
+      <div class="verdict-label">What doesn't work</div>
+      <p>There's no mention of what happens after the project ends. Who owns the workflow? Who fixes it when it breaks? The whole document describes delivery, not handover.</p>
+      <p>"Capture and reuse organisational knowledge" is listed as an outcome but there's nothing about how you actually get that knowledge out of the people who have it. That's the hard bit — it's just stated as a deliverable.</p>
+      <p>The engagement options say nothing about minimum viable commitment. Someone's going to sign up for a one-off workshop, get a report, and wonder why nothing changed.</p>
+    </div>
+
+    <div class="verdict-block neutral">
+      <div class="verdict-label">Ideas for improvement</div>
+      <p>Add something explicit about what "implementation" means after go-live: who maintains the workflow, what ongoing support looks like, what the exit looks like.</p>
+      <p>Speak directly to frontline adoption. Not training as a line item — what does it actually mean to get a team of sceptical, time-poor people to change how they work?</p>
+      <p>Give an honest example of what a failed implementation looks like and why, so people know you've thought about it.</p>
+    </div>
+
+    <div class="pull-quote">
+      <blockquote>Has anyone who actually does this job been involved in designing the change — and what do they think will happen on day fifteen when the launch energy is gone?</blockquote>
+      <cite>Dev · Frontline Worker · Signature question</cite>
+    </div>
+
+    <hr class="divider">
+
+    <!-- Fatima -->
+    <div class="persona-header">
+      <div class="persona-name">Fatima — End User</div>
+      <div class="persona-role">The person the service is ultimately for</div>
+      <div class="persona-score">Score: 4/10</div>
+      <div class="persona-score-justification">I still don't really know what you do or whether it's for me.</div>
+    </div>
+
+    <div class="verdict-block good">
+      <div class="verdict-label">What works</div>
+      <p>"I start with the business problem, not the technology" — that's a relief. Every other person I've spoken to led with a tool.</p>
+      <p>"Reduce manual administration and repetitive tasks" — that's the first thing in the list and it's the thing I actually care about.</p>
+      <p>The tone isn't full of jargon. I can mostly read it without a dictionary.</p>
+    </div>
+
+    <div class="verdict-block bad">
+      <div class="verdict-label">What doesn't work</div>
+      <p>None of the examples feel like my business. "Due diligence workflows" and "proposal generation" sound like law firms and management consultancies. I run a 30-person engineering firm. Is this for me?</p>
+      <p>There's nothing here that tells me what working with you actually feels like, how long it takes, or what I need to do. I'm supposed to start with a "discovery conversation" — but what happens after that?</p>
+      <p>"Measurable value" is promised twice but never illustrated. What does that actually look like? A number? A before-and-after?</p>
+    </div>
+
+    <div class="verdict-block neutral">
+      <div class="verdict-label">Ideas for improvement</div>
+      <p>Add one concrete example — even brief and anonymised — that shows a real outcome in plain language: "A 15-person firm was spending three days a month on X. After six weeks, it took four hours."</p>
+      <p>The "Who I Work With" section lists firm types but says nothing about what problems they typically have. That's where recognition happens.</p>
+      <p>Say something about the experience of working with you: how long a typical engagement lasts, how much of the client team's time it requires, what they need to prepare.</p>
+    </div>
+
+    <div class="pull-quote">
+      <blockquote>Does this actually make my life easier — or does it just make things easier for the people who built it?</blockquote>
+      <cite>Fatima · End User · Signature question</cite>
+    </div>
+
+    <hr class="divider">
+
+    <!-- Graham -->
+    <div class="persona-header">
+      <div class="persona-name">Graham — Regulator</div>
+      <div class="persona-role">Compliance, legal, and regulatory function</div>
+      <div class="persona-score">Score: 6/10</div>
+      <div class="persona-score-justification">There's an AI Governance section, which is more than most. But it's thinner than it should be.</div>
+    </div>
+
+    <div class="verdict-block good">
+      <div class="verdict-label">What works</div>
+      <p>The governance and risk service exists as a named offering, not an afterthought. That signals the author understands this is a real concern, not a checkbox.</p>
+      <p>"Vendor-neutral" is a compliance-relevant commitment. It reduces the risk of being locked into a tool whose terms of service become a problem later.</p>
+      <p>"Human oversight" is listed explicitly — that matters given where the regulatory environment is heading on AI decision-making.</p>
+    </div>
+
+    <div class="verdict-block bad">
+      <div class="verdict-label">What doesn't work</div>
+      <p>"Data handling" and "security considerations" are listed as governance topics but there's no indication of which framework or regulatory context they're assessed against. GDPR? ISO 27001? Sector-specific regulation? This reads like a list of topics, not a body of expertise.</p>
+      <p>The named client types — professional services, engineering, architecture — all operate in regulated environments with real data obligations. There's no acknowledgement of client confidentiality, data minimisation, or third-party AI tool risk.</p>
+      <p>"Responsible and sustainable AI use" — what does sustainable mean here? It sounds like a value, not a standard.</p>
+    </div>
+
+    <div class="verdict-block neutral">
+      <div class="verdict-label">Ideas for improvement</div>
+      <p>Name the regulatory frameworks you work within, or at minimum the categories of risk your governance work addresses. Clients in regulated sectors need to know you understand their environment.</p>
+      <p>Add a note about how you handle client data during an engagement — what tools you use, what data leaves the client environment, what protections are in place.</p>
+      <p>Acknowledge that requirements are changing. This signals awareness of an environment that is evolving quickly.</p>
+    </div>
+
+    <div class="pull-quote">
+      <blockquote>Have we actually checked whether this is permissible — and if it is, are we confident we understand the conditions under which it stays permissible?</blockquote>
+      <cite>Graham · Regulator · Signature question</cite>
+    </div>
+
+    <hr class="divider">
+
+    <!-- Helen -->
+    <div class="persona-header">
+      <div class="persona-name">Helen — Middle Manager</div>
+      <div class="persona-role">The implementation layer between strategy and delivery</div>
+      <div class="persona-score">Score: 6/10</div>
+      <div class="persona-score-justification">I can see the value. I'm not sure I can explain it to my team.</div>
+    </div>
+
+    <div class="verdict-block good">
+      <div class="verdict-label">What works</div>
+      <p>The outcomes list — "reduce manual administration", "improve consistency" — is written in the language I'd use with my team. That matters; I can repeat it.</p>
+      <p>"Adoption support" is included. Every consultant I've seen skip that has left us with a tool nobody uses.</p>
+      <p>The framing around "practical" and "fits existing processes" reduces the threat level. My team is going to ask whether this means changing everything.</p>
+    </div>
+
+    <div class="verdict-block bad">
+      <div class="verdict-label">What doesn't work</div>
+      <p>There's no indication of what involvement is required from inside the organisation. Every project like this takes more of my team's time than anyone admits upfront. What does this actually cost in people and attention?</p>
+      <p>There's nothing about how resistance to change is handled. Because there will be resistance. There always is.</p>
+      <p>"Fractional AI advisor" and "retained consulting support" sound like open-ended commitments with no clear scope. Before I take this to my director I need to know what I'm asking for budget approval on.</p>
+    </div>
+
+    <div class="verdict-block neutral">
+      <div class="verdict-label">Ideas for improvement</div>
+      <p>Add an honest statement about what the client organisation needs to contribute — time, access, a named internal owner. Hiding this leads to friction mid-project.</p>
+      <p>Say something about change management — not as a service line, just acknowledge that adoption is a human problem, not a technology problem.</p>
+      <p>Give clearer framing around cost and commitment. Even ballpark engagement lengths or typical team sizes would help someone build a business case.</p>
+    </div>
+
+    <div class="pull-quote">
+      <blockquote>When I take this back to my team and they ask me why, and what it means for their day-to-day, what am I supposed to say?</blockquote>
+      <cite>Helen · Middle Manager · Signature question</cite>
+    </div>
+
+    <hr class="divider">
+
+    <!-- Patrick -->
+    <div class="persona-header">
+      <div class="persona-name">Patrick — Investor</div>
+      <div class="persona-role">Capital provider and financial scrutineer</div>
+      <div class="persona-score">Score: 5/10</div>
+      <div class="persona-score-justification">This reads like a well-intentioned positioning document. It doesn't yet tell me why this provider specifically.</div>
+    </div>
+
+    <div class="verdict-block good">
+      <div class="verdict-label">What works</div>
+      <p>The focus on outcomes over technology is the right strategic orientation — it de-risks the offering from tool obsolescence.</p>
+      <p>"Vendor-neutral" is a genuine differentiator if it's real. Most people who say this have a preferred stack they'll recommend regardless.</p>
+      <p>The service structure — assessment, design, implementation, governance — maps to a logical buying sequence. That's good commercial architecture.</p>
+    </div>
+
+    <div class="verdict-block bad">
+      <div class="verdict-label">What doesn't work</div>
+      <p>There is no evidence. No track record, no sector depth signalled, no proof points. "Practical, vendor-neutral, and focused on outcomes" describes what every consultant in this space claims. What makes this one defensible?</p>
+      <p>The economics are completely absent. How does this business scale? A sole practitioner advising small firms on workflow design is structurally limited. What's the capacity model?</p>
+      <p>The outcomes list describes benefits but gives no mechanism for how they are achieved or measured. "Reduce manual administration" is a claim, not a result.</p>
+    </div>
+
+    <div class="verdict-block neutral">
+      <div class="verdict-label">Ideas for improvement</div>
+      <p>Add something that functions as proof: a reference-able result, a named sector, a methodology that is clearly the author's own and not generic consulting language.</p>
+      <p>The engagement options section should include an indication of typical scope and return. Even a framing like "most clients see ROI within X months" gives buyers something to stress-test.</p>
+      <p>If this is a solo practice, say so. The value is direct access to a senior practitioner — that's a real differentiator if framed correctly.</p>
+    </div>
+
+    <div class="pull-quote">
+      <blockquote>What has to be true for this to work — and how confident are we, really, in each of those things?</blockquote>
+      <cite>Patrick · Investor · Signature question</cite>
+    </div>
+
+    <hr class="divider">
+
+    <!-- Zoe -->
+    <div class="persona-header">
+      <div class="persona-name">Zoe — Investigative Journalist</div>
+      <div class="persona-role">Public voice and external scrutineer</div>
+      <div class="persona-score">Score: 5/10</div>
+      <div class="persona-score-justification">Every sentence in this document is defensible. Almost none of them are specific.</div>
+    </div>
+
+    <div class="verdict-block good">
+      <div class="verdict-label">What works</div>
+      <p>"My focus is not AI experimentation for its own sake" — this is the one sentence that sounds like a real position rather than a positioning statement. It implies the author has seen experimentation-for-its-own-sake and has a view on it.</p>
+      <p>The governance section's existence signals that the author isn't only interested in the sale. Most AI consultants selling to small firms don't mention risk.</p>
+      <p>The tone is quiet and doesn't oversell. In a space full of hype, that's a form of honesty.</p>
+    </div>
+
+    <div class="verdict-block bad">
+      <div class="verdict-label">What doesn't work</div>
+      <p>The claim "practical, vendor-neutral, and focused on outcomes" is structurally unfalsifiable. How would a client know if this was not true? What would the counter-evidence look like?</p>
+      <p>"Measurable value" appears twice. Measurable by whom, using what method, over what timeframe? Accountability requires specificity. This document has none.</p>
+      <p>The document reads as if no client has yet existed. If clients have existed, the absence of any reference to that is a choice worth questioning.</p>
+    </div>
+
+    <div class="verdict-block neutral">
+      <div class="verdict-label">Ideas for improvement</div>
+      <p>Name a constraint the author will not work around. Something that reveals a position, not just a set of capabilities.</p>
+      <p>The "Next Step" section is the weakest part of the document. "We can begin with an initial discovery conversation" is the softest possible ask. What happens in that conversation? What does the client walk away with?</p>
+      <p>Consider what the person burned by a previous AI consultant would read here and find insufficient. That person is in your target market. Have you written for them?</p>
+    </div>
+
+    <div class="pull-quote">
+      <blockquote>How does this look to someone who has no reason to be sympathetic — and is that person right?</blockquote>
+      <cite>Zoe · Investigative Journalist · Signature question</cite>
+    </div>
+
+    <hr class="divider">
+
+    <!-- ─── Synthesis ───────────────────────────────────────── -->
+    <h2 class="section-heading">Panel synthesis</h2>
+
+    <div class="prose">
+      <p>Average score across six perspectives: <strong>5.2 / 10</strong>.</p>
+    </div>
+
+    <div class="action-block">
+      <div class="action-label">Where the panel agrees</div>
+      <p>The document is competent but evidence-free. Every persona independently found that the claims are generic and unsubstantiated. "Practical, vendor-neutral, outcome-focused" describes an aspiration, not a track record. The single most consistent gap is proof: a case, a number, a named sector, anything that makes the claims falsifiable.</p>
+    </div>
+
+    <div class="action-block">
+      <div class="action-label">Where the panel disagrees</div>
+      <p>Patrick and Graham are relatively satisfied with the structure and see a credible service architecture. Dev and Fatima are much less satisfied — they're reading for operational reality and lived experience, and finding neither. Zoe and Dev agree the absence of any acknowledgement of failure modes is a credibility gap; Patrick would also like to see it, but for different reasons — he wants to understand the downside risk model, not just the promise.</p>
+    </div>
+
+    <div class="action-block">
+      <div class="action-label">The single highest-leverage change</div>
+      <p>Add one concrete example. One client, one problem, one outcome with a number in it. It doesn't need to be named. It just needs to be real. Every persona would be better served by it: Fatima would recognise herself, Dev would see whether you understand operational reality, Patrick would have a proof point, Graham would assess sector competence, Helen would have something to take to her director, and Zoe would stop being able to say the claims are unfalsifiable. Nothing else in the document would move the needle as far.</p>
+    </div>
+
+    <!-- Open questions -->
+    <div class="questions-block">
+      <div class="questions-label">Signature questions from the panel</div>
+      <div class="question-item">Has anyone who actually does this job been involved in designing the change — and what do they think will happen on day fifteen when the launch energy is gone?</div>
+      <div class="question-item">Does this actually make my life easier — or does it just make things easier for the people who built it?</div>
+      <div class="question-item">Have we actually checked whether this is permissible — and if it is, are we confident we understand the conditions under which it stays permissible?</div>
+      <div class="question-item">When I take this back to my team and they ask me why, and what it means for their day-to-day, what am I supposed to say?</div>
+      <div class="question-item">What has to be true for this to work — and how confident are we, really, in each of those things?</div>
+      <div class="question-item">How does this look to someone who has no reason to be sympathetic — and is that person right?</div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="page-footer">
+      <div class="footer-meta">Roundtable · Panel Feedback · Stakeholder Map · 3 June 2026</div>
+    </footer>
+
+  </div>
+
+</body>
+</html>
