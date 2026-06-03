@@ -4,7 +4,7 @@
 
 A prompt framework for running structured multi-perspective analysis using AI. You give it a panel of personas and a problem, decision or piece of content. Each persona responds from their own distinct point of view. The friction between perspectives is the point.
 
-Works with Claude, Codex, and any LLM-based tool that reads project instructions from `AGENTS.md`.
+Works with AI coding and agent tools that read project instructions from `AGENTS.md`.
 
 ---
 
@@ -16,7 +16,7 @@ The project has four components:
 
 **Prompt files** contain the instructions that tell your AI how to run each type of session. You do not need to read them directly — your AI reads them automatically when you invoke a workflow.
 
-**AGENTS.md** is the instruction layer that tells your AI how to use everything. It is read automatically by Claude, Codex, and other compatible tools when you open this folder.
+**AGENTS.md** is the instruction layer that tells your AI how to use everything. Compatible AI coding and agent tools read it automatically when you open this folder.
 
 The `_assets` folder contains shared files used by generated outputs and repository presentation, including the HTML template, output design guidance, and social preview image. You usually only need to edit these if you want to change how saved outputs or repo previews look.
 
@@ -24,7 +24,9 @@ The `_assets` folder contains shared files used by generated outputs and reposit
 
 ## Getting started
 
-Open this folder in your AI tool of choice (Claude in Cowork or Claude Code, Codex, or any agent that reads `AGENTS.md`). You do not need to do any setup. The AI will read the instructions automatically.
+Open this folder in your AI tool of choice, such as Claude Cowork, Claude Code, OpenAI Codex, or another agent that reads `AGENTS.md`. You do not need to do any setup if your tool supports `AGENTS.md`; the AI will read the instructions automatically.
+
+`AGENTS.md` compatibility means the tool automatically reads the project instructions in this repository before responding. If your tool does not support `AGENTS.md`, paste the contents of `AGENTS.md` into the conversation before asking it to run a Roundtable workflow.
 
 Then use plain language to invoke one of the workflows below. At the end of each session, the AI will ask which format you want the output saved in: Markdown, Word document, or HTML. Markdown is the default if you skip the question.
 
@@ -187,6 +189,16 @@ Six thinkers each bringing a different academic discipline to the problem. The p
 
 ---
 
+## Mixing personas from different panels
+
+You do not have to use a default panel exactly as shipped. If no single panel fits the question, ask your AI to assemble a temporary panel from personas across multiple folders.
+
+For example, a product launch decision might combine Elena from Six Hats for evidence quality, Fatima from Stakeholder Map for end-user reality, Graham from Stakeholder Map for regulatory risk, Claire from Time Horizons for strategy, and Raj from Disciplines for systems thinking.
+
+If you find yourself reusing the same combination, copy those persona files into a new folder in `/_custompanels/` and save it as a custom panel.
+
+---
+
 ## Creating a custom panel
 
 Custom panels live in `/_custompanels/`. Each panel is a subfolder named `Panel - {Your panel name}/` containing individual persona files.
@@ -240,4 +252,7 @@ Four to six personas is the right range. Below four, you lose coverage. Above si
 Once you've created a panel folder with at least one persona file, the AI will find it automatically and include it in the list of available panels.
 
 ---
-MIT License
+
+## License
+
+Roundtable is available under the [MIT License](LICENSE).

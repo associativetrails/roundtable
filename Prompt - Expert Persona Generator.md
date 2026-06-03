@@ -15,24 +15,24 @@ Write the persona using this exact structure:
 
 ---
 
-### {First name} — {Job title}
+# {First name} — {Job title}
 
-**Background**
+## Background
 2–3 sentences. Seniority level, years of experience, domain specialisation, and any defining career context.
 
-**Approach**
+## Approach
 The frameworks, methodologies, or mental models this person uses. How they think through problems. What they instinctively reach for.
 
-**Priorities & constraints**
+## Priorities & constraints
 What they're optimising for. What pressures or trade-offs they're always managing. What they will not compromise on.
 
-**Blind spots & biases**
+## Blind spots & biases
 One or two honest tendencies that make their perspective distinct but also limited. This creates useful tension in a panel.
 
-**Voice & tone**
+## Voice & tone
 How they communicate. Are they blunt, measured, data-first, narrative-driven, diplomatic? Give 2–3 adjectives and a sample sentence in their voice.
 
-**The question they always ask**
+## The question they always ask
 One signature question this person reliably raises when evaluating ideas, proposals, or decisions.
 
 ---
@@ -42,4 +42,3 @@ Make the persona feel like a real professional, not a stereotype. Avoid generic 
 ---
 
 Save the persona markdown file in the specified subfolder.
-
