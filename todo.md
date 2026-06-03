@@ -4,7 +4,7 @@
 
 - [x] **Resolve the Blog readers panel.** Either replace it with a more generic example panel (e.g. "Product Team") that any user could relate to, or move it into an `Examples/` subfolder with a note explaining it shows what a domain-specific panel looks like. As-is it creates noise next to the five generic default panels.
 
-- [ ] **Add an Outputs folder and .gitignore.** Every Panel Feedback and Problem Solving session writes a markdown file into the project root. Create an `Outputs/` subfolder and update AGENTS.md to save sessions there. Add a `.gitignore` to exclude at minimum `.DS_Store` and optionally the Outputs folder if generated content shouldn't be committed.
+- [x] **Add an Outputs folder and .gitignore.** Every Panel Feedback and Problem Solving session writes a markdown file into the project root. Create an `Outputs/` subfolder and update AGENTS.md to save sessions there. Add a `.gitignore` to exclude at minimum `.DS_Store` and optionally the Outputs folder if generated content shouldn't be committed.
 
 ## Medium priority
 
