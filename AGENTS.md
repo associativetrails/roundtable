@@ -41,7 +41,7 @@ When the user asks for panel feedback, they will provide a document to assess an
 
 If no panel is specified, list the available options by reading the subfolder names and ask the user which one they want.
 
-Once a panel is identified, read all persona files in the matching subfolder (Panels - {Group name}/Persona - {Name} - {Role}.md`). Inject those personas into the prompt found in `Prompt - Panel Feedback.md` and run the session.
+Once a panel is identified, read all persona files in the matching subfolder (Panel - {Group name}/Persona - {Name} - {Role}.md`). Inject those personas into the prompt found in `Prompt - Panel Feedback.md` and run the session.
 
 Before saving, ask the user which output format they want: Markdown (.md), Word document (.docx), or HTML (.html). Default to Markdown if they do not specify. Then save following the output format instructions below, using the filename `Panel Feedback - {Group} - {Title of document}` in the `/_output` folder.
 

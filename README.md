@@ -238,3 +238,6 @@ A panel works because the personas think differently — not just have different
 Four to six personas is the right range. Below four, you lose coverage. Above six, personas start repeating each other.
 
 Once you've created a panel folder with at least one persona file, the AI will find it automatically and include it in the list of available panels.
+
+---
+MIT License

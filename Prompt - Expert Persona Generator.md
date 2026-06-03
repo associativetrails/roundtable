@@ -41,5 +41,5 @@ Make the persona feel like a real professional, not a stereotype. Avoid generic 
 
 ---
 
-Return a downloadable markdown file of the persona and save it to the specified subfolder.
+Save the persona markdown file in the specified subfolder.
 

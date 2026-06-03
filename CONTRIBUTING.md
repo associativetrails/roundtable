@@ -148,6 +148,6 @@ You do not need to merge a pull request just because someone spent time on it. A
 
 ---
 
-## Licence
+## License
 
-By contributing to this repository, you agree that your contribution will be licensed under the same licence as the project.
+By contributing to this repository, you agree that your contribution will be licensed under the same license as the project.
