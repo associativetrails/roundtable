@@ -6,9 +6,12 @@ This project contains:
 	* `/_custompanels` is initially empty - when the user builds their own panels, store them in this folder
 * The persona subfolders are named `Panel - {Group name}/`, each containing persona files named `Persona - {Name} - {Role}.md`
 * An output folder `/_output` which is where the panel outputs are saved
+* An example output folder `/_exampleoutput` that contains examples of the output of each prompt in each format.
+* An `/_assets` folder that contains static files used in output generation, marketing, etc.
 - `Prompt - Expert Persona Generator.md` — instructions for generating a new persona
 - `Prompt - Panel Feedback.md` — instructions for running a panel feedback session
 - `Prompt - Problem Solving.md` — instructions for running a problem-solving roundtable
+- `Prompt - Board of Directors.md` — instructions for running a decision making board meeting
 
 ---
 ## Lists of panels
@@ -29,6 +32,8 @@ When the user asks to generate a persona, read `Prompt - Expert Persona Generato
 ## Default behavior
 
 When the user asks a question and it is not obvious which of the below types of panel they want, give them the list: Panel feedback, Problem solving, Decision making. 
+
+When asking the user questions before running a panel, explain briefly that the more specific context, constraints, goals, examples, and background they provide, the better and more useful the panel output will be.
 
 ---
 ## Panel Feedback - for direct feedback on a document or text
@@ -73,10 +78,10 @@ When saving session output, apply the following based on the user's chosen forma
 Save the session output directly as a `.md` file. Use `#`, `##`, and `###` headers for structure. Include the generation date immediately below the document title in the format `**Date:** D Month YYYY`. This is the default if the user does not specify a format.
 
 **Word document (.docx)**
-Read `DESIGN.md` first, then read the `docx` skill instructions and follow them to produce a `.docx` file. Use the Word-specific guidance in DESIGN.md for every module — typography, colours, borders, spacing, and structure. Apply the correct Word style (Heading 1, Heading 2, etc.) and simulate shading, borders, and colour using the values specified in DESIGN.md. Follow the document structure order defined at the bottom of DESIGN.md. Include the generation date immediately below the document title in the format `D Month YYYY`.
+Read `/_assets/DESIGN.md` first, then read the `docx` skill instructions and follow them to produce a `.docx` file. Use the Word-specific guidance in `/_assets/DESIGN.md` for every module — typography, colours, borders, spacing, and structure. Apply the correct Word style (Heading 1, Heading 2, etc.) and simulate shading, borders, and colour using the values specified in `/_assets/DESIGN.md`. Follow the document structure order defined at the bottom of `/_assets/DESIGN.md`. Include the generation date immediately below the document title in the format `D Month YYYY`.
 
 **HTML (.html)**
-Save the session output as a self-contained `.html` file. Base the output on `template.html` in the project root — read that file first and use its CSS and module structure exactly. Do not invent new styles. Use the modules already defined in the template: `.page-header`, `.hero`, `.persona-header`, `.prose`, `.pull-quote`, `.stat-block`, `.verdict-block`, `.action-block`, `.step-list`, `.questions-block`, and `.page-footer`. Populate the session type, panel name, and date in the `.session-type` line at the top. No external dependencies.
+Save the session output as a self-contained `.html` file. Base the output on `/_assets/template.html` — read that file first and use its CSS and module structure exactly. Do not invent new styles. Use the modules already defined in the template: `.page-header`, `.hero`, `.persona-header`, `.prose`, `.pull-quote`, `.stat-block`, `.verdict-block`, `.action-block`, `.step-list`, `.questions-block`, and `.page-footer`. Populate the session type, panel name, and date in the `.session-type` line at the top. No external dependencies.
 
 In all cases, save the file to the `/_output` folder using the filename specified in the workflow section above, with the appropriate extension.
 
@@ -91,3 +96,5 @@ If the user has not specified a panel and needs a recommendation, use the follow
 - **Time Horizons** — best when near-term pressure and long-term positioning are in tension, or when urgency is driving the conversation and needs to be examined
 - **Stakeholder Map** — best when the decision affects people not in the room, or when the gap between strategic intent and operational reality needs surfacing
 - **Disciplines** — best for multi-dimensional problems where no single lens is obviously right, or when the group may be overconfident and needs the full range of methods applied simultaneously
+
+

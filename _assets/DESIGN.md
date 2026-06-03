@@ -1,6 +1,6 @@
 # Roundtable Design System
 
-This document describes the visual design language for Roundtable session outputs. It is the authoritative reference for generating both HTML (see `template.html`) and Word documents. All outputs should follow these conventions regardless of format.
+This document describes the visual design language for Roundtable session outputs. It is the authoritative reference for generating both HTML (see `/_assets/template.html`) and Word documents. All outputs should follow these conventions regardless of format.
 
 ---
 
