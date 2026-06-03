@@ -2,7 +2,7 @@
 
 This project contains:
 * Two subfolders containing panels of personas:
-	* `/_examplepanels` contains panels that are included in the Panel of Experts repository
+	* `/_examplepanels` contains panels that are included in the Roundtable repository
 	* `/_custompanels` is initially empty - when the user builds their own panels, store them in this folder
 * The persona subfolders are named `Panel - {Group name}/`, each containing persona files named `Persona - {Name} - {Role}.md`
 * An output folder `/_output` which is where the panel outputs are saved

@@ -1,6 +1,6 @@
-# Panel of Experts
+# Roundtable
 
-A prompt framework for running structured multi-perspective analysis using AI. You give it a panel of personas and a problem or piece of content. Each persona responds from their own distinct point of view. The friction between perspectives is the point.
+A prompt framework for running structured multi-perspective analysis using AI. You give it a panel of personas and a problem, decision or piece of content. Each persona responds from their own distinct point of view. The friction between perspectives is the point.
 
 Works with Claude, Codex, and any LLM-based tool that reads project instructions from `AGENTS.md`.
 
@@ -22,52 +22,86 @@ The project has three components:
 
 Open this folder in your AI tool of choice (Claude in Cowork or Claude Code, Codex, or any agent that reads `AGENTS.md`). You do not need to do any setup. The AI will read the instructions automatically.
 
-Then use plain language to invoke one of the three workflows below.
+Then use plain language to invoke one of the workflows below.
 
 ---
 
-## Workflows
+## The three workflows
 
-### 1. Panel Feedback
+There are three distinct use cases. Choosing the right one matters — each produces a fundamentally different kind of output.
 
-Give the AI a piece of content — a blog post, proposal, landing page, pitch deck, 1-pager — and tell it which panel you want feedback from. Each persona reads the content and delivers structured, scored feedback from their own perspective, followed by a panel synthesis that surfaces where they agree, where they disagree, and the single highest-leverage change.
+---
 
-**How to use it:**
+### 1. Panel Feedback — *critique something you've already made*
+
+Use this when you have a finished or near-finished artifact — a document, proposal, pitch, landing page, strategy memo — and you want rigorous feedback on it. The panel reads the content and each persona delivers structured critique from their specific perspective. The session ends with a synthesis identifying where they agree, where they diverge, and the single highest-leverage change.
+
+The output is reactive. You bring the work; the panel responds to it.
+
+**When to use it:**
+- You have a draft you want stress-tested before sharing it
+- You want multiple viewpoints on the same document without running separate reviews
+- You need to know what a regulator, an end user, and a skeptic would each say about the same thing
+
+**How to invoke it:**
 > "Give me panel feedback on this article from the Six Hats panel."
 
 > "I want feedback on this proposal from the Stakeholder Map panel."
 
-If you do not specify a panel, the AI will list the available options and ask which one you want.
-
-Output is saved as `Panel Feedback - {Panel} - {Title}.md` in the project folder.
+Output is saved as `Panel Feedback - {Panel} - {Title}.md`.
 
 ---
 
-### 2. Problem Solving
+### 2. Problem Solving — *work through something you don't yet understand*
 
-Give the AI a problem or decision and tell it which panel you want to work through it with. The panel runs as a structured roundtable: each persona gives their initial take, they debate with each other, and the session ends with a synthesis of core insights and tensions — plus a final reflective question.
+Use this when you have a problem — not a decision, not a document, but a situation where you're not sure what's actually going on or what to do about it. The panel runs a diagnostic workflow: it reframes the problem before anyone proposes solutions, maps root causes, generates distinct approaches from each persona's lens, and ends with a sequenced action map you can actually follow.
 
-**How to use it:**
-> "Help me think through this hiring decision using the Time Horizons panel."
+The output is a workflow, not a verdict. The emphasis is on understanding the problem correctly before acting on it.
 
-> "I want to work through a problem with the Historical Figures panel. Here's the situation..."
+**When to use it:**
+- You're stuck and not sure why
+- You've tried something and it didn't work, but you don't know what to change
+- The problem feels more complex than your current framing of it
+- You want to move from "something is wrong" to "here's what to try, in what order"
 
-If you do not specify a panel, the AI will list the available options and ask which one you want.
+**How to invoke it:**
+> "Help me think through this with the Disciplines panel. Here's the situation..."
 
-Output is saved as `Problem Solving - {Panel} - {Title}.md` in the project folder.
+> "I want to work through a problem using the Historical Figures panel."
+
+Output is saved as `Problem Solving - {Panel} - {Title}.md`.
 
 ---
 
-### 3. Generate a Persona
+### 3. Decision Making — *pressure-test a decision before you commit*
 
-Ask the AI to generate a new persona by giving it a role, some context, and any specific traits you want. The AI produces a fully structured persona file in the standard format and saves it to the correct subfolder.
+Use this when you already know what you're deciding between and you want serious scrutiny before you commit. The panel runs as a formal board: personas are elected, a Chair is chosen, and the session moves through structured deliberation, cross-examination, and a final synthesis. The Chair drives toward a recommendation — not consensus, but a reasoned position with dissent documented.
 
-**How to use it:**
-> "Generate a persona for a senior NHS nurse for the Healthcare panel."
+The output is a recommendation with the reasoning and tradeoffs made explicit. It is designed for high-stakes choices where the cost of getting it wrong is significant.
 
-> "Add a venture-backed startup CFO to the Business panel."
+**When to use it:**
+- You have two or more real options and need to choose
+- You want your assumptions challenged by people who think differently
+- The stakes are high enough that "going with your gut" isn't sufficient
+- You want a record of how the decision was made and what was weighed
 
-The AI will ask for the job title, industry or company context, and any additional notes, then write and save the persona file automatically.
+**How to invoke it:**
+> "Help me make a decision using the Time Horizons panel. Here are my options..."
+
+> "I need to decide between two strategies. Run it through the Six Hats panel."
+
+Output is saved as `Decision Making - {Panel} - {Title}.md`.
+
+---
+
+## Choosing between the three
+
+| | Panel Feedback | Problem Solving | Decision Making |
+|---|---|---|---|
+| **You have...** | A finished artifact | A problem or situation | A choice between options |
+| **You need...** | Critique and improvement | Diagnosis and a path forward | Scrutiny and a recommendation |
+| **Output is...** | Scored feedback + synthesis | Sequenced action map | Reasoned recommendation |
+| **Session feels like...** | A structured review | A working session | A board meeting |
 
 ---
 
@@ -142,11 +176,23 @@ Six thinkers each bringing a different academic discipline to the problem. The p
 
 ---
 
-## Creating your own panels
+## Creating a custom panel
 
-To add a new panel, create a subfolder named `Personas - {Your panel name}/` and add persona files named `Persona - {Name} - {Role}.md`.
+Custom panels live in `/_custompanels/`. Each panel is a subfolder named `Panel - {Your panel name}/` containing individual persona files.
 
-Each persona file follows this structure:
+### Option 1 — Use the persona generator (recommended)
+
+Ask your AI to generate a persona for you:
+
+> "Generate a persona for a senior NHS nurse for a Healthcare panel."
+
+> "Add a venture-backed startup CFO to a Finance panel."
+
+The AI will ask for a name, role, and any context you want to provide, then write and save the file automatically in the correct format and location.
+
+### Option 2 — Write personas by hand
+
+Create a file named `Persona - {Name} - {Role}.md` in your panel subfolder. Each file follows this structure:
 
 ```
 # Name — Role
@@ -170,4 +216,10 @@ How they communicate. 2–3 adjectives and a sample sentence in their voice.
 One signature question this person reliably raises.
 ```
 
-Use the persona generator workflow to create new personas automatically, or write them by hand following this format. The AI will find any subfolder that matches the naming convention and treat it as an available panel.
+### What makes a good panel
+
+A panel works because the personas think differently — not just have different job titles. When building a custom panel, aim for genuine cognitive diversity: people who would actually disagree about what matters, what to prioritise, and how to reason about tradeoffs. A panel of five people who all optimise for the same thing is just one person with five voices.
+
+Four to six personas is the right range. Below four, you lose coverage. Above six, personas start repeating each other.
+
+Once you've created a panel folder with at least one persona file, the AI will find it automatically and include it in the list of available panels.

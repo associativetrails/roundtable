@@ -1,4 +1,4 @@
-# Panel of Experts — Pre-launch TODO
+# Roundtable — Pre-launch TODO
 
 ## High priority (do before publishing)
 
