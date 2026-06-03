@@ -18,15 +18,13 @@ The project has four components:
 
 **AGENTS.md** is the instruction layer that tells your AI how to use everything. Compatible AI coding and agent tools read it automatically when you open this folder.
 
-The `_assets` folder contains shared files used by generated outputs and repository presentation, including the HTML template, output design guidance, and social preview image. You usually only need to edit these if you want to change how saved outputs or repo previews look.
+The `_assets` folder contains shared files used by generated outputs and repository presentation, including the HTML template, output design guidance, and social preview image. You usually only need to edit these if you want to change how saved outputs look.
 
 ---
 
 ## Getting started
 
-Open this folder in your AI tool of choice, such as Claude Cowork, Claude Code, OpenAI Codex, or another agent that reads `AGENTS.md`. You do not need to do any setup if your tool supports `AGENTS.md`; the AI will read the instructions automatically.
-
-`AGENTS.md` compatibility means the tool automatically reads the project instructions in this repository before responding. If your tool does not support `AGENTS.md`, paste the contents of `AGENTS.md` into the conversation before asking it to run a Roundtable workflow.
+Open this folder in your AI tool of choice, such as Claude Cowork, Claude Code, OpenAI Codex, or another agent that reads `AGENTS.md`. You do not need to do any setup if your tool supports `AGENTS.md`; the AI will read the instructions automatically. If your tool does not support `AGENTS.md`, paste the contents of `AGENTS.md` into the conversation before asking it to run a Roundtable workflow.
 
 Then use plain language to invoke one of the workflows below. At the end of each session, the AI will ask which format you want the output saved in: Markdown, Word document, or HTML. Markdown is the default if you skip the question.
 
