@@ -146,6 +146,8 @@ Six thinkers from history, each embodying a distinct intellectual tradition. The
 - Decisions with a significant ethical or moral dimension, where Douglass and Aurelius will force the group to confront what it is actually choosing
 - Innovation and strategy questions where Lovelace's horizon-thinking and da Vinci's cross-domain curiosity are needed alongside Franklin's practicality and Curie's empirical restraint
 
+NB - These personas are inspired by distinct intellectual traditions. Marcus Aurelius has not reviewed this for accuracy.
+
 ---
 
 ### Time Horizons
