@@ -213,6 +213,14 @@ Ask your AI to generate a persona for you:
 
 The AI will ask for a name, role, and any context you want to provide, then write and save the file automatically in the correct format and location.
 
+You can also give the persona a **disposition**, which is optional. This sets the temperament the expertise is delivered through: how quickly they commit, how much friction they generate, whether they lead with the risk or the opportunity.
+
+> "Generate a supply chain director for an Operations panel, and make her argue like a critic."
+
+> "Add a CTO with a relentless, visionary streak."
+
+Disposition modifies expertise, it never replaces it. The job title still decides what the persona knows; the disposition decides how they hold it. Two economists with different dispositions should reach for the same evidence and disagree about how hard to push the conclusion.
+
 ### Option 2 — Write personas by hand
 
 Create a file named `Persona - {Name} - {Role}.md` in your panel subfolder. Each file follows this structure:
@@ -250,6 +258,30 @@ A panel works because the personas think differently — not just have different
 Four to six personas is the right range. Below four, you lose coverage. Above six, personas start repeating each other.
 
 Once you've created a panel folder with at least one persona file, the AI will find it automatically and include it in the list of available panels.
+
+---
+
+## Recipe: a panel of your actual team
+
+The five default panels vary the lens on a problem. This recipe does something they cannot: it predicts how a specific real room will receive a specific real proposal.
+
+If the people you work with have taken a personality assessment such as [PrinciplesYou](https://principlesyou.com/archetypes), Myers-Briggs, DISC or Big Five, you already hold something useful. You know how each of them tends to react under pressure, what they push back on first, and where they go quiet. Combine that with what they actually do for a living and you can build a panel that behaves like your leadership team, your board, or your steering group.
+
+Build it like this:
+
+1. Create `/_custompanels/Panel - {Team name}/`.
+2. For each person, run the persona generator with their **real role and domain**, and use their assessment result as the **disposition** input.
+3. Keep the panel to the people whose reaction actually matters. Four to six still applies.
+
+> "Generate a persona for our operations director, fifteen years in logistics, and give her the disposition of a Peacekeeper."
+
+> "Add our commercial lead, ex-agency, and make him a Shaper."
+
+Then run any of the three workflows against it. This panel is most useful for Panel Feedback on something you are about to circulate, and for pressure-testing a change you know will be unpopular before you announce it.
+
+**Two cautions.** Use the assessment as a description of temperament in your own words rather than pasting the framework's own text into persona files, particularly if you plan to share the panel. And remember what you are producing: a model of how someone tends to react, not a prediction of what they will say. It is a rehearsal, not a substitute for asking them.
+
+Panels built this way are personal to you, so they belong in `/_custompanels/`, which is not tracked by this repository.
 
 ---
 
